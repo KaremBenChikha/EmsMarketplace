@@ -1,0 +1,25 @@
+.h-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.h-row {
+    display: flex;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.h-col {
+    overflow-y: auto;
+}
+
+.h-col:first-child {
+    flex: 1;
+    
+}
+
+.h-col:last-child {
+    flex: 4;
+    overflow-y: auto;
+}
