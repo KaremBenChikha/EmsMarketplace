@@ -3,7 +3,7 @@ import Home from "./pages/Home";
 import ProductList from "./pages/ProductList";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
-import Cart from "./pages/CartScreen";
+import Cart from "./pages/Cart";
 import Products from "./pages/Products";
 import Applications from "./pages/Applications";
 import ApplicationList from "./pages/ApplicationList";
@@ -22,7 +22,10 @@ import { useSelector } from "react-redux";
 import Wishlist from "./pages/Wishlist";
 import Contact from "./pages/Contact";
 import Blog from "./pages/Blog/Blog";
-
+import ShippingScreen from "./pages/ShippingScreen";
+import PaymentScreen from "./pages/PaymentScreen";
+import PlaceOrder from "./pages/PlaceOrder";
+import OrderScreen from "./pages/OrderScreen";
 
 const App = () => {
   const user = useSelector((state) => state.user.currentUser);
@@ -69,7 +72,10 @@ const App = () => {
         <Route path="/posts/:postId">
           <Single />
         </Route>
-        <Route path="/order/:id" component={Cart}/>
+        <Route path="/shipping" component={ShippingScreen}/>
+        <Route path="/payment" component={PaymentScreen}/>
+        <Route path="/placeorder" component={PlaceOrder}/>
+        <Route path="/order/:id" component={OrderScreen}/>
         <Route path="/login">{user ? <Redirect to="/" /> : <Login />}</Route>
         <Route path="/register">
           {user ? <Redirect to="/" /> : <Register />}

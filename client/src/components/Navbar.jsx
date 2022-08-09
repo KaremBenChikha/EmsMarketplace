@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { mobile } from "../responsive";
 import { useSelector,useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { logout } from '../actions/userActions'
+import { logout } from '../redux/actions/userActions'
 import { NavDropdown, Navbar } from 'react-bootstrap'
 import {
   FavoriteBorderOutlined

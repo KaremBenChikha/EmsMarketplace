@@ -11,8 +11,9 @@ const Container = styled.div`
   justify-content: space-between;
 `;
 
-const Products = ({ cat, filters, sort }) => {
+const Products = ({ cat, filters, sort, app}) => {
   const [products, setProducts] = useState([]);
+  const [product, setProduct] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
 
   useEffect(() => {
@@ -21,7 +22,7 @@ const Products = ({ cat, filters, sort }) => {
         const res = await axios.get(
           cat
             ? `http://localhost:5000/api/products?category=${cat}`
-            : `http://localhost:5000/api/products?applications=${cat}`
+            : `http://localhost:5000/api/products?application=${cat}`
         );
         setProducts(res.data);
       } catch (err) {}
@@ -30,7 +31,17 @@ const Products = ({ cat, filters, sort }) => {
   }, [cat]);
 
   useEffect(() => {
-    cat &&
+    const getProduct = async () => {
+      try {
+        const res = await axios.get(`http://localhost:5000/api/product?application=${app}` );
+        setProduct(res.data);
+      } catch (err) {}
+    };
+    getProduct();
+  }, [app]);
+
+  useEffect(() => {
+    cat && app && 
       setFilteredProducts(
         products.filter((item) =>
           Object.entries(filters).every(([key, value]) =>
@@ -38,7 +49,7 @@ const Products = ({ cat, filters, sort }) => {
           )
         )
       );
-  }, [products, cat, filters]);
+  }, [products, cat, filters,app,product]);
 
   useEffect(() => {
     if (sort === "newest") {
@@ -58,11 +69,12 @@ const Products = ({ cat, filters, sort }) => {
 
   return (
     <Container>
-      {cat
+      {cat && app
         ? filteredProducts.map((item) => <Product item={item} key={item.id} />)
         : products
             .slice(0, 5)
             .map((item) => <Product item={item} key={item.id} />)}
+
       
     </Container>
   );

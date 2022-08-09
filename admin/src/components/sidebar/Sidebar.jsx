@@ -28,10 +28,12 @@ export default function Sidebar() {
               Home
             </li>
             </Link>
+            <Link to="/analytics" className="link">
             <li className="sidebarListItem">
               <Timeline className="sidebarIcon" />
-              Analytics
+              Statistics
             </li>
+            </Link>
             <li className="sidebarListItem">
               <TrendingUp className="sidebarIcon" />
               Sales
@@ -53,14 +55,18 @@ export default function Sidebar() {
                 Products
               </li>
             </Link>
-            <li className="sidebarListItem">
-              <AttachMoney className="sidebarIcon" />
-              Transactions
-            </li>
-            <li className="sidebarListItem">
-              <BarChart className="sidebarIcon" />
-              Reports
-            </li>
+            <Link to="/orders" className="link">
+              <li className="sidebarListItem">
+                <AttachMoney className="sidebarIcon" />
+                Orders
+              </li>
+            </Link>
+            <Link to="/articles" className="link">
+              <li className="sidebarListItem">
+                <BarChart className="sidebarIcon" />
+                Add Articles
+              </li>
+            </Link>
           </ul>
         </div>
         <div className="sidebarMenu">
@@ -87,10 +93,12 @@ export default function Sidebar() {
               <WorkOutline className="sidebarIcon" />
               Manage
             </li>
+            <Link to="/analytics" className="link">
             <li className="sidebarListItem">
               <Timeline className="sidebarIcon" />
               Analytics
             </li>
+            </Link>
             <li className="sidebarListItem">
               <Report className="sidebarIcon" />
               Reports

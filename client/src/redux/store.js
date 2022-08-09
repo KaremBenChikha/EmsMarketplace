@@ -1,6 +1,9 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
-import cartReducer from "./cartRedux";
+import cartReducers from "./cartRedux";
+import cartReducer from "./reducers/CartReducers";
 import userReducer from "./userRedux";
+import { orderCreateReducer ,orderDetailsReducer,orderPayReducer} from './reducers/OrderReducers';
+import {productReviewCreateReducer } from './reducers/productReducers'
 import {
   persistStore,
   persistReducer,
@@ -18,12 +21,44 @@ const persistConfig = {
   version: 1,
   storage,
 };
+//cartItems
+const cartItemsFromLocalStorage= localStorage.getItem("cartItems")
+?JSON.parse(localStorage.getItem("cartItems"))
+:[];
 
-const rootReducer = combineReducers({ user: userReducer, cart: cartReducer });
+//shippingAddress
+const shippingAddressFromLocalStorage = localStorage.getItem('shippingAddress')
+? JSON.parse(localStorage.getItem('shippingAddress'))
+:{};
+//LOGIN
+const userInfoFromStorage = localStorage.getItem('userInfo')
+? JSON.parse(localStorage.getItem('userInfo'))
+: null
+
+const initialState = {
+  cart2:{
+    cartItems:cartItemsFromLocalStorage,
+    shippingAddress:shippingAddressFromLocalStorage
+  },
+  userLogin: { userInfo: userInfoFromStorage },
+ }
+
+
+const rootReducer = combineReducers({ 
+  user: userReducer, 
+  cart: cartReducers,
+  cart2: cartReducer,
+  productReviewCreate: productReviewCreateReducer,
+  orderCreate: orderCreateReducer,
+  orderDetails: orderDetailsReducer,
+  orderPay: orderPayReducer,
+ });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-export const store = configureStore({
+export const store = configureStore(
+  {
+  initialState,
   reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

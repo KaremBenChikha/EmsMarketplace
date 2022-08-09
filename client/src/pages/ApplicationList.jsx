@@ -28,7 +28,7 @@ const ProductList = () => {
       <Na/>
       <Title>{cat}</Title>
 
-      <Products cat={cat}/>
+      <Products app={cat}/>
       
       <Footer />
     </Container>

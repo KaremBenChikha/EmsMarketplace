@@ -8,8 +8,6 @@ import { userRequest } from "../../requestMethods";
 import {
   getStorage,
   ref,
-  uploadBytesResumable,
-  getDownloadURL,
 } from "firebase/storage";
 import app from "../../firebase";
 import { updateProduct } from "../../redux/apiCalls";
@@ -28,7 +26,7 @@ export default function Product() {
 
   const product = useSelector((state) =>
     state.product.products.find((product) => product._id === productId)
-  );
+);
 
   const handleChange = (e) => {
     setInputs((prev) => {
@@ -41,40 +39,10 @@ export default function Product() {
     const fileName = new Date().getTime();
     const storage = getStorage(app);
     const storageRef = ref(storage, fileName);
-    const uploadTask = uploadBytesResumable(storageRef);
-
-    
-    uploadTask.on(
-      "state_changed",
-      (snapshot) => {
-        // Observe state change events such as progress, pause, and resume
-        // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
-        const progress =
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        console.log("Upload is " + progress + "% done");
-        switch (snapshot.state) {
-          case "paused":
-            console.log("Upload is paused");
-            break;
-          case "running":
-            console.log("Upload is running");
-            break;
-          default:
-        }
-      },
-      (error) => {
-        // Handle unsuccessful uploads
-      },
-      () => {
-
-        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-          const product = { ...inputs, img: downloadURL, categories: cat };
-          const id = product._id;
-          updateProduct(id,product, dispatch);
-        
-        });
-      }
-    );
+     
+    const product = { ...inputs, categories: cat };
+    const id = product._id;
+    updateProduct(id,product, dispatch);
 
   }
     

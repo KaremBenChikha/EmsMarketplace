@@ -14,11 +14,14 @@ import Message from '../components/starRating/Message'
 import Loader from '../components/starRating/Loader'
 import { Link,useParams  } from 'react-router-dom'
  import { Row, Col, ListGroup } from 'react-bootstrap'
- import { listProductDetails, createProductReview } from '../actions/productActions'
- import { PRODUCT_CREATE_REVIEW_RESET } from '../constants/productConstants'
+ import { listProductDetails, createProductReview } from '../redux/actions/productActions'
+ import { PRODUCT_CREATE_REVIEW_RESET } from '../redux/constants/productConstants'
  import {FaStar} from 'react-icons/fa'
  import { useDispatch, useSelector } from 'react-redux'
  import Rating from '../components/Rating'
+ import {
+  FavoriteBorderOutlined,
+} from "@material-ui/icons";
 
  const Container = styled.div``;
 const Wrapper = styled.div`
@@ -156,6 +159,22 @@ const Button2 = styled.button`
     box-sizing: content-box;
     text-align: center;
 `;
+const Icon = styled.div`
+width: 40px;
+height: 40px;
+border-radius: 50%;
+background-color: white;
+display: flex;
+align-items: center;
+justify-content: center;
+margin: 10px;
+transition: all 0.5s ease;
+&:hover {
+  background-color: #e9f5f5;
+  transform: scale(1.1);
+}
+`;
+
 
 const ColoredLine = ({ color }) => (
   <hr
@@ -169,27 +188,19 @@ const ColoredLine = ({ color }) => (
 
 const Product = ({match}) => {
   const location = useLocation();
- 
   const [product, setProduct] = useState({});
   const [quantity, setQuantity] = useState(1);
-
   const dispatch = useDispatch();
-  //const {userInfo} = userLogin ;
   //-------------------
   const { productId } = useParams();
-  //const productId = match.params.id;
   const [rating, setRating] = useState(0)
   const [comment, setComment] = useState('')
-
   const user = useSelector((state) => state.user.currentUser);
-  //const userLogin = useSelector((state) => state.userLogin)
-  //const { user  } = userLogin
-
   const productReviewCreate = useSelector((state) => state.productReviewCreate );
   const {
     success: successCreateReview,
     error: errorProductReview,
-  } = productReviewCreate || {};
+  } = productReviewCreate;
 
 
    useEffect(() => {
@@ -199,15 +210,14 @@ const Product = ({match}) => {
       setComment('')
       dispatch({ type: PRODUCT_CREATE_REVIEW_RESET })
     }
-    dispatch(listProductDetails(productId))
+    
    }, [dispatch, match, successCreateReview])
 
-   const submitHandler = (e) => {
-    e.preventDefault()
+   const submitHandler = () => {
     dispatch(
       createProductReview(productId, {
-        rating,
-        comment,
+        rating: product.rating,
+        comment: product.comment,
       })
     )
   }
@@ -279,6 +289,9 @@ const Product = ({match}) => {
             </AmountContainer>
             <Button2 onClick={handleClick}>Add To Cart</Button2>
             <Button2 onClick={handleClick}>Contact for Inquiry</Button2>
+            <Icon  onClick={handleClick}>
+              <FavoriteBorderOutlined />
+            </Icon>
           </AddContainer>
         </InfoContainer>
       </Wrapper>

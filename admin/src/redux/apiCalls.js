@@ -28,6 +28,17 @@ import {
   addUsersStart,
   addUsersSuccess,
 } from "./usersRedux";
+import {
+  addPostSuccess,
+  addPostFailure,
+  addPostStart,
+} from "./postRedux";
+
+import {
+  getOrderFailure,
+  getOrderStart,
+  getOrderSuccess,
+} from "./orderRedux";
 
 export const login = async (dispatch, user) => {
   dispatch(loginStart());
@@ -88,3 +99,35 @@ export const getUsers = async (dispatch) => {
     dispatch(getUsersFailure());
   }
 };
+
+export const deleteUser = async (id, dispatch) => {
+  dispatch(deleteUsersStart());
+  try {
+    const res = await userRequest.delete(`/users/${id}`);
+    dispatch(deleteUsersSuccess(res.data));
+  } catch (err) {
+    dispatch(deleteUsersFailure());
+  }
+};
+
+export const getOrders = async (dispatch) => {
+  dispatch(getOrderStart());
+  try {
+    const res = await publicRequest.get("/orders");
+    dispatch(getOrderSuccess(res.data));
+  } catch (err) {
+    dispatch(getOrderFailure());
+  }
+};
+
+export const addPost = async (post, dispatch) => {
+  dispatch(addPostStart());
+  try {
+    const res = await userRequest.post(`/posts`, post);
+    dispatch(addPostSuccess(res.data));
+  } catch (err) {
+    dispatch(addPostFailure());
+  }
+};
+
+

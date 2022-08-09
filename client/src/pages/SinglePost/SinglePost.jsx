@@ -1,6 +1,7 @@
 import "./single.css";
 import SinglePost from "../../components/singlePost/SinglePost";
 import Na from "../../components/navbar/Na";
+import Footer from "../../components/Footer";
 export default function Single() {
   return (
     <>
@@ -8,8 +9,8 @@ export default function Single() {
       <Na/>
     <div className="single">
       <SinglePost/>
-
     </div>
+    <Footer/>
     </>
   );
 }
