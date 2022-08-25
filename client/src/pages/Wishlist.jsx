@@ -3,13 +3,11 @@ import { Add, Remove } from "@material-ui/icons";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
 import { mobile } from "../responsive";
 import StripeCheckout from "react-stripe-checkout";
 import { useEffect, useState } from "react";
 import { userRequest } from "../requestMethods";
 import { useHistory } from "react-router";
-import Na from "../components/navbar/Na";
 
 const KEY = process.env.REACT_APP_STRIPE;
 
@@ -189,10 +187,8 @@ const Wishlist = () => {
       stripeToken && makeRequest();
     }, [stripeToken, cart.total, history]);
     return (
+      <>
       <Container>
-        <Navbar />
-        <br/>
-        <Na/>
         <Wrapper>
           <Title>My Wishlist</Title>
           <Top>
@@ -229,6 +225,7 @@ const Wishlist = () => {
         </Wrapper>
         <Footer />
       </Container>
+      </>
     );
   };
 

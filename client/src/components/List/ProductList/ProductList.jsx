@@ -1,6 +1,6 @@
 import React from 'react'
 import '../list.css'
-import Rating from '../../Rating'
+import Rating from '../../Rating/Rating'
 import { Card } from 'react-bootstrap'
 import styled from "styled-components";
 import {

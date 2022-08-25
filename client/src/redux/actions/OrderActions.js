@@ -10,9 +10,9 @@ import {
     ORDER_PAY_REQUEST,
     ORDER_PAY_SUCCESS,
     ORDER_PAY_FAIL,
-    ORDER_LIST_SUCCESS,
-    ORDER_LIST_FAIL,
-    ORDER_LIST_REQUEST,
+    ORDER_LIST_MY_SUCCESS,
+    ORDER_LIST_MY_FAIL,
+    ORDER_LIST_MY_REQUEST,
   } from '../constants/orderConstants'
   import {CART_CLEAR_ITEMS} from '../constants/CartConstants'
   import { logout  } from './userActions';
@@ -125,6 +125,41 @@ export const payOrder = (orderId,paymentResult) => async (dispatch, getState) =>
       }
     dispatch({
       type: ORDER_PAY_FAIL,
+      payload: message,
+    });
+  }
+};
+
+//USER ORDERS
+export const listMyOrders = () => async (dispatch) => {
+  try {
+    dispatch({
+      type: ORDER_LIST_MY_REQUEST,
+    })
+    
+    const token = window.localStorage.getItem("currentUser")
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    }
+
+    const { data } = await axios.get(`http://localhost:5000/api/orders/get`, config)
+
+    dispatch({
+      type: ORDER_LIST_MY_SUCCESS,
+      payload: data,
+    })
+  } catch (error) {
+      const message = error.response && error.response.data.message
+      ? error.response.data.message
+      : error.message;
+      if(message == "Not authorizes , token failed") {
+          dispatch(logout());
+      }
+    dispatch({
+      type: ORDER_LIST_MY_FAIL,
       payload: message,
     });
   }

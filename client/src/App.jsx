@@ -1,12 +1,13 @@
-import Product from "./pages/Product";
+import Product from "./pages/Products/Product";
 import Home from "./pages/Home";
-import ProductList from "./pages/ProductList";
-import Register from "./pages/Register";
-import Login from "./pages/Login";
-import Cart from "./pages/Cart";
-import Products from "./pages/Products";
-import Applications from "./pages/Applications";
-import ApplicationList from "./pages/ApplicationList";
+import ProductList from "./pages/Products/ProductList";
+import Register from "./pages/Login_Rege/Register";
+import Login from "./pages/Login_Rege/Login";
+import Cart from "./pages/Orders/Cart";
+import Products from "./pages/Products/Products";
+import Applications from "./pages/Applications/Applications";
+import ApplicationList from "./pages/Applications/ApplicationList";
+import TrackOrders from "./pages/Orders/TrackOrders";
 import './App.css';
 import Single from "./pages/SinglePost/SinglePost";
 //import Wishlist  from './components/wishlist/Wishlist';
@@ -17,15 +18,18 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-import Success from "./pages/Success";
 import { useSelector } from "react-redux";
 import Wishlist from "./pages/Wishlist";
-import Contact from "./pages/Contact";
+import Contact from "./pages/Contact/Contact";
 import Blog from "./pages/Blog/Blog";
-import ShippingScreen from "./pages/ShippingScreen";
-import PaymentScreen from "./pages/PaymentScreen";
-import PlaceOrder from "./pages/PlaceOrder";
-import OrderScreen from "./pages/OrderScreen";
+import ShippingScreen from "./pages/Orders/ShippingScreen";
+import PaymentScreen from "./pages/Orders/PaymentScreen";
+import PlaceOrder from "./pages/Orders/PlaceOrder";
+import OrderScreen from "./pages/Orders/OrderScreen";
+import Navbar from "./components/navbar/Navbar";
+import Navbar2 from "./components/Navbar2";
+import ApplicationType from "./pages/Applications/ApplicationType";
+import Faq from "./pages/FAQ/Faq";
 
 const App = () => {
   const user = useSelector((state) => state.user.currentUser);
@@ -34,7 +38,8 @@ const App = () => {
 
   return (
     <Router>
-         
+      <Navbar2/>
+      <Navbar/>
       <Switch>
         <Route exact path="/">
           <Home />
@@ -47,9 +52,6 @@ const App = () => {
         </Route>
         <Route path="/cart">
           <Cart />
-        </Route>
-        <Route path="/success">
-          <Success />
         </Route>
         <Route path="/products">
           <Products />
@@ -66,12 +68,19 @@ const App = () => {
         <Route path="/applicationList/:application">
           <ApplicationList />
         </Route>
+        <Route path="/applicationType/:type">
+          <ApplicationType />
+        </Route>
         <Route path="/post">
           <Blog />
         </Route>
         <Route path="/posts/:postId">
           <Single />
         </Route>
+        <Route path="/trackOrders">
+          <TrackOrders />
+        </Route>
+        <Route path="/FAQ" component={Faq}/>
         <Route path="/shipping" component={ShippingScreen}/>
         <Route path="/payment" component={PaymentScreen}/>
         <Route path="/placeorder" component={PlaceOrder}/>

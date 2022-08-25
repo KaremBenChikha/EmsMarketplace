@@ -1,12 +1,10 @@
 import React from "react";
-import Categories from "../components/Categories";
+import Categories from "../components/Categories/Categories";
 import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
-import Newsletter from "../components/Newsletter";
-import Products from "../components/Products";
-import Slider from "../components/Slider";
+import Newsletter from "../components/newsletter/Newsletter";
+import Products from "../components/Products/Products";
+import Slider from "../components/Slider/Slider";
 import { mobile } from "../responsive";
-import Na from "../components/navbar/Na";
 import styled from "styled-components";
 
 const InfoContainer = styled.div`
@@ -22,9 +20,7 @@ const Title = styled.h1`
 const Home = () => {
   return (
     <div>
-      <Navbar />
-      <br/>
-      <Na/>
+      
       <Slider />
       <Categories />
         <InfoContainer>

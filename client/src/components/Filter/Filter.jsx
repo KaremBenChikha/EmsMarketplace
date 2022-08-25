@@ -6,7 +6,7 @@ import MainCategory from '../Partials/MainCategory/MainCategory'
 import Brand from '../Partials/Brand/Brand'
 import Application from '../Partials/Application/Application'
 import Price from '../Partials/Price/Price'
-import Product from "../Product";
+import Product from "../Products/Product";
 import axios from 'axios'
 
 const Filter = ({selectedCategory, selectToggle, selectedRating, selectRating, brands,applications, changeChecked,changeChecked2, selectedPrice, changePrice, cat, rating}) => {

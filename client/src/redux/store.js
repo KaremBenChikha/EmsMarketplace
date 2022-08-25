@@ -2,8 +2,8 @@ import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import cartReducers from "./cartRedux";
 import cartReducer from "./reducers/CartReducers";
 import userReducer from "./userRedux";
-import { orderCreateReducer ,orderDetailsReducer,orderPayReducer} from './reducers/OrderReducers';
-import {productReviewCreateReducer } from './reducers/productReducers'
+import { orderCreateReducer ,orderDetailsReducer,orderPayReducer,orderListMyReducer} from './reducers/OrderReducers';
+import {productReviewCreateReducer ,productListReducer} from './reducers/productReducers'
 import {
   persistStore,
   persistReducer,
@@ -14,6 +14,9 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
+import { 
+  userLoginReducer, 
+} from './reducers/userReducers'
 import storage from "redux-persist/lib/storage";
 
 const persistConfig = {
@@ -45,14 +48,19 @@ const initialState = {
 
 
 const rootReducer = combineReducers({ 
-  user: userReducer, 
+  user: userReducer,
+  userLogin: userLoginReducer, 
+  productList: productListReducer,
   cart: cartReducers,
   cart2: cartReducer,
   productReviewCreate: productReviewCreateReducer,
   orderCreate: orderCreateReducer,
   orderDetails: orderDetailsReducer,
   orderPay: orderPayReducer,
+  //orderPay: orderPayReducer,
+  orderListMy: orderListMyReducer
  });
+
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 

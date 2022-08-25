@@ -1,5 +1,5 @@
 import React from 'react'
-import Products from '../Products'
+import Products from '../Products/Products'
 import './list.css'
 import ProductList from './ProductList/ProductList'
 import styled from "styled-components";
