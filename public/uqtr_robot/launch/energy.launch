@@ -1,0 +1,11 @@
+<launch>
+    <!--MATLAB ENERGY PACKAGE-->
+    <node pkg="aliencontrol" type="aliencontrol" name="aliencontrol_top">
+      <param name="cmd" value="cd /home/karem/AGVHybride/devel/lib/agv_final_ros_build;./agv_final_ros_build_node"/>
+    </node>
+
+<!--Battery Estimator node-->
+  <node pkg="battery_soc_estimator" type="soc_estimator" name="soc_estimator">
+  </node>
+  
+</launch>

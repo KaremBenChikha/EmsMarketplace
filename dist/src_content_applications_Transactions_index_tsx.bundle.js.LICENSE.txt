@@ -1,0 +1,69 @@
+/*! ../../../components/Footer */
+
+/*! ../../../components/Label */
+
+/*! ../../../components/PageTitleWrapper */
+
+/*! ./BulkActions */
+
+/*! ./PageHeader */
+
+/*! ./RecentOrders */
+
+/*! ./RecentOrdersTable */
+
+/*! @mui/icons-material/AddTwoTone */
+
+/*! @mui/icons-material/DeleteTwoTone */
+
+/*! @mui/icons-material/EditTwoTone */
+
+/*! @mui/icons-material/MoreVertTwoTone */
+
+/*! @mui/material */
+
+/*! @mui/material/styles */
+
+/*! date-fns */
+
+/*! numeral */
+
+/*! prop-types */
+
+/*! react */
+
+/*! react-helmet-async */
+
+/*! react/jsx-runtime */
+
+/*!****************************************!*\
+  !*** ./src/components/Label/index.tsx ***!
+  \****************************************/
+
+/*!*****************************************!*\
+  !*** ./src/components/Footer/index.tsx ***!
+  \*****************************************/
+
+/*!***************************************************!*\
+  !*** ./src/components/PageTitleWrapper/index.tsx ***!
+  \***************************************************/
+
+/*!*********************************************************!*\
+  !*** ./src/content/applications/Transactions/index.tsx ***!
+  \*********************************************************/
+
+/*!**************************************************************!*\
+  !*** ./src/content/applications/Transactions/PageHeader.tsx ***!
+  \**************************************************************/
+
+/*!***************************************************************!*\
+  !*** ./src/content/applications/Transactions/BulkActions.tsx ***!
+  \***************************************************************/
+
+/*!****************************************************************!*\
+  !*** ./src/content/applications/Transactions/RecentOrders.tsx ***!
+  \****************************************************************/
+
+/*!*********************************************************************!*\
+  !*** ./src/content/applications/Transactions/RecentOrdersTable.tsx ***!
+  \*********************************************************************/

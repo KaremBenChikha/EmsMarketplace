@@ -1,0 +1,37 @@
+/*! ../../../../components/LogoSign */
+
+/*! ./utils/createSvgIcon */
+
+/*! @babel/runtime/helpers/interopRequireDefault */
+
+/*! @mui/icons-material/Facebook */
+
+/*! @mui/icons-material/Instagram */
+
+/*! @mui/icons-material/MailTwoTone */
+
+/*! @mui/icons-material/Twitter */
+
+/*! @mui/material */
+
+/*! @mui/material/styles */
+
+/*! react */
+
+/*! react-helmet-async */
+
+/*! react-router-dom */
+
+/*! react/jsx-runtime */
+
+/*!*******************************************!*\
+  !*** ./src/components/LogoSign/index.tsx ***!
+  \*******************************************/
+
+/*!*******************************************************!*\
+  !*** ./src/content/pages/Status/ComingSoon/index.tsx ***!
+  \*******************************************************/
+
+/*!*********************************************************!*\
+  !*** ./node_modules/@mui/icons-material/MailTwoTone.js ***!
+  \*********************************************************/

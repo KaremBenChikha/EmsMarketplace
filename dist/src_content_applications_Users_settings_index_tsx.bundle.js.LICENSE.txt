@@ -1,0 +1,85 @@
+/*! ../../../../components/Footer */
+
+/*! ../../../../components/Label */
+
+/*! ../../../../components/PageTitleWrapper */
+
+/*! ../../../../components/Text */
+
+/*! ./ActivityTab */
+
+/*! ./EditProfileTab */
+
+/*! ./NotificationsTab */
+
+/*! ./PageHeader */
+
+/*! ./SecurityTab */
+
+/*! @mui/icons-material/CommentTwoTone */
+
+/*! @mui/icons-material/DeleteTwoTone */
+
+/*! @mui/icons-material/DoneTwoTone */
+
+/*! @mui/icons-material/EditTwoTone */
+
+/*! @mui/icons-material/MoreHorizTwoTone */
+
+/*! @mui/icons-material/ShareTwoTone */
+
+/*! @mui/icons-material/ThumbUpAltTwoTone */
+
+/*! @mui/material */
+
+/*! @mui/material/styles */
+
+/*! date-fns */
+
+/*! prop-types */
+
+/*! react */
+
+/*! react-helmet-async */
+
+/*! react/jsx-runtime */
+
+/*!***************************************!*\
+  !*** ./src/components/Text/index.tsx ***!
+  \***************************************/
+
+/*!****************************************!*\
+  !*** ./src/components/Label/index.tsx ***!
+  \****************************************/
+
+/*!*****************************************!*\
+  !*** ./src/components/Footer/index.tsx ***!
+  \*****************************************/
+
+/*!***************************************************!*\
+  !*** ./src/components/PageTitleWrapper/index.tsx ***!
+  \***************************************************/
+
+/*!***********************************************************!*\
+  !*** ./src/content/applications/Users/settings/index.tsx ***!
+  \***********************************************************/
+
+/*!****************************************************************!*\
+  !*** ./src/content/applications/Users/settings/PageHeader.tsx ***!
+  \****************************************************************/
+
+/*!*****************************************************************!*\
+  !*** ./src/content/applications/Users/settings/ActivityTab.tsx ***!
+  \*****************************************************************/
+
+/*!*****************************************************************!*\
+  !*** ./src/content/applications/Users/settings/SecurityTab.tsx ***!
+  \*****************************************************************/
+
+/*!********************************************************************!*\
+  !*** ./src/content/applications/Users/settings/EditProfileTab.tsx ***!
+  \********************************************************************/
+
+/*!**********************************************************************!*\
+  !*** ./src/content/applications/Users/settings/NotificationsTab.tsx ***!
+  \**********************************************************************/

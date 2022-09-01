@@ -1,0 +1,87 @@
+/*! ../../../components/Label */
+
+/*! ./BottomBarContent */
+
+/*! ./ChatContent */
+
+/*! ./SidebarContent */
+
+/*! ./TopBarContent */
+
+/*! @mui/icons-material/AlarmTwoTone */
+
+/*! @mui/icons-material/AttachFileTwoTone */
+
+/*! @mui/icons-material/BlockTwoTone */
+
+/*! @mui/icons-material/CallTwoTone */
+
+/*! @mui/icons-material/CancelTwoTone */
+
+/*! @mui/icons-material/CheckTwoTone */
+
+/*! @mui/icons-material/ColorLensTwoTone */
+
+/*! @mui/icons-material/DescriptionTwoTone */
+
+/*! @mui/icons-material/EmojiEmotionsTwoTone */
+
+/*! @mui/icons-material/ExpandMore */
+
+/*! @mui/icons-material/InfoTwoTone */
+
+/*! @mui/icons-material/NotificationsOffTwoTone */
+
+/*! @mui/icons-material/ScheduleTwoTone */
+
+/*! @mui/icons-material/SearchTwoTone */
+
+/*! @mui/icons-material/SendTwoTone */
+
+/*! @mui/icons-material/SettingsTwoTone */
+
+/*! @mui/icons-material/VideoCameraFrontTwoTone */
+
+/*! @mui/icons-material/WarningTwoTone */
+
+/*! @mui/material */
+
+/*! @mui/material/styles */
+
+/*! date-fns */
+
+/*! prop-types */
+
+/*! react */
+
+/*! react-custom-scrollbars-2 */
+
+/*! react-helmet-async */
+
+/*! react-router-dom */
+
+/*! react/jsx-runtime */
+
+/*!****************************************!*\
+  !*** ./src/components/Label/index.tsx ***!
+  \****************************************/
+
+/*!******************************************************!*\
+  !*** ./src/content/applications/Messenger/index.tsx ***!
+  \******************************************************/
+
+/*!************************************************************!*\
+  !*** ./src/content/applications/Messenger/ChatContent.tsx ***!
+  \************************************************************/
+
+/*!**************************************************************!*\
+  !*** ./src/content/applications/Messenger/TopBarContent.tsx ***!
+  \**************************************************************/
+
+/*!***************************************************************!*\
+  !*** ./src/content/applications/Messenger/SidebarContent.tsx ***!
+  \***************************************************************/
+
+/*!*****************************************************************!*\
+  !*** ./src/content/applications/Messenger/BottomBarContent.tsx ***!
+  \*****************************************************************/

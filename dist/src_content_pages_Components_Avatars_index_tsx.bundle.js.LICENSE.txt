@@ -1,0 +1,95 @@
+/*! ../../../../components/Footer */
+
+/*! ../../../../components/PageTitle */
+
+/*! ../../../../components/PageTitleWrapper */
+
+/*! ../styles/styled */
+
+/*! ../styles/useThemeProps */
+
+/*! ./utils/createSvgIcon */
+
+/*! @babel/runtime/helpers/esm/extends */
+
+/*! @babel/runtime/helpers/esm/objectWithoutPropertiesLoose */
+
+/*! @babel/runtime/helpers/interopRequireDefault */
+
+/*! @mui/icons-material/AddTwoTone */
+
+/*! @mui/icons-material/Assignment */
+
+/*! @mui/icons-material/Folder */
+
+/*! @mui/icons-material/Pageview */
+
+/*! @mui/material */
+
+/*! @mui/material/Avatar */
+
+/*! @mui/material/Stack */
+
+/*! @mui/material/colors */
+
+/*! @mui/material/styles */
+
+/*! @mui/system */
+
+/*! @mui/utils */
+
+/*! prop-types */
+
+/*! react */
+
+/*! react-helmet-async */
+
+/*! react/jsx-runtime */
+
+/*!*****************************************!*\
+  !*** ./src/components/Footer/index.tsx ***!
+  \*****************************************/
+
+/*!********************************************!*\
+  !*** ./src/components/PageTitle/index.tsx ***!
+  \********************************************/
+
+/*!***************************************************!*\
+  !*** ./node_modules/@mui/material/Stack/Stack.js ***!
+  \***************************************************/
+
+/*!***************************************************!*\
+  !*** ./node_modules/@mui/material/colors/pink.js ***!
+  \***************************************************/
+
+/*!***************************************************!*\
+  !*** ./src/components/PageTitleWrapper/index.tsx ***!
+  \***************************************************/
+
+/*!****************************************************!*\
+  !*** ./node_modules/@mui/icons-material/Folder.js ***!
+  \****************************************************/
+
+/*!******************************************************!*\
+  !*** ./node_modules/@mui/icons-material/Pageview.js ***!
+  \******************************************************/
+
+/*!********************************************************!*\
+  !*** ./node_modules/@mui/icons-material/AddTwoTone.js ***!
+  \********************************************************/
+
+/*!********************************************************!*\
+  !*** ./node_modules/@mui/icons-material/Assignment.js ***!
+  \********************************************************/
+
+/*!********************************************************!*\
+  !*** ./src/content/pages/Components/Avatars/index.tsx ***!
+  \********************************************************/
+
+/*!*********************************************************!*\
+  !*** ./node_modules/@mui/material/colors/deepOrange.js ***!
+  \*********************************************************/
+
+/*!*********************************************************!*\
+  !*** ./node_modules/@mui/material/colors/deepPurple.js ***!
+  \*********************************************************/

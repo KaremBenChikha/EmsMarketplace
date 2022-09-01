@@ -1,0 +1,55 @@
+/*! ../../../../components/Footer */
+
+/*! ../../../../components/PageTitle */
+
+/*! ../../../../components/PageTitleWrapper */
+
+/*! @mui/icons-material/Add */
+
+/*! @mui/icons-material/AddTwoTone */
+
+/*! @mui/icons-material/Mail */
+
+/*! @mui/icons-material/Remove */
+
+/*! @mui/material */
+
+/*! @mui/material/Badge */
+
+/*! @mui/material/Box */
+
+/*! @mui/material/Button */
+
+/*! @mui/material/ButtonGroup */
+
+/*! @mui/material/FormControlLabel */
+
+/*! @mui/material/Stack */
+
+/*! @mui/material/Switch */
+
+/*! @mui/material/styles */
+
+/*! prop-types */
+
+/*! react */
+
+/*! react-helmet-async */
+
+/*! react/jsx-runtime */
+
+/*!*****************************************!*\
+  !*** ./src/components/Footer/index.tsx ***!
+  \*****************************************/
+
+/*!********************************************!*\
+  !*** ./src/components/PageTitle/index.tsx ***!
+  \********************************************/
+
+/*!***************************************************!*\
+  !*** ./src/components/PageTitleWrapper/index.tsx ***!
+  \***************************************************/
+
+/*!*******************************************************!*\
+  !*** ./src/content/pages/Components/Badges/index.tsx ***!
+  \*******************************************************/

@@ -1,0 +1,18 @@
+<launch>
+
+    <!--MATLAB agv dynamics model -->
+    <node pkg="agv_dynamic_model" type="agv_dynamic_model_node" name="agv_dynamic_model" output="screen"> </node>
+    
+    <!--MATLAB agv energy management system with Fuzzy logic model -->
+    <node pkg="agv_ems_fuzzy" type="agv_ems_fuzzy_node" name="agv_ems_fuzzy" output="screen"> </node> 
+    
+    <!--MATLAB agv battery model  -->
+    <node pkg="agv_battery_model" type="agv_battery_model_node" name="agv_battery_model" output="screen"> </node>
+    
+    <!--MATLAB agv fuelcell model -->
+    <node pkg="agv_fuelcell_model" type="agv_fuelcell_model_node" name="agv_fuelcell_model" output="screen"> </node>
+
+    <!--MATLAB agv mass estimation model -->
+    <node pkg="agv_mass_estimation_model" type="agv_mass_estimation_model_node" name="agv_mass_estimation_model" output="screen"> </node>
+
+</launch>
