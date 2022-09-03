@@ -123,7 +123,7 @@ export const getOrders = async (dispatch) => {
 export const addPost = async (post, dispatch) => {
   dispatch(addPostStart());
   try {
-    const res = await userRequest.post(`/posts`, post);
+    const res = await userRequest.post("/posts", post);
     dispatch(addPostSuccess(res.data));
   } catch (err) {
     dispatch(addPostFailure());

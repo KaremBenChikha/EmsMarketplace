@@ -21,7 +21,7 @@ export default function OrderD() {
     const orderId = location.pathname.split("/")[2];
     //const orders = useSelector((state) => state.order.orders);
     const dispatch = useDispatch();
-
+    
     const orderDetails = useSelector((state) => state.orderDetails);
     const {loading,error,order} =orderDetails;
 
@@ -116,8 +116,8 @@ export default function OrderD() {
                       <h5>
                         <strong>Customer</strong>
                       </h5>
-                      <p>{"user.username"}</p>
-                      <p>{"user.email"}</p>
+                      <p>ID: {order?.user}</p>
+                      
                     </div>
                     </div>
                   </div>
@@ -135,35 +135,21 @@ export default function OrderD() {
             </div>
             <div className="col-md-8 center">
               <h5>
-                <strong> Order info</strong>
+                <strong> Deliver to</strong>
               </h5>
-              <p>Shipping address:{order?.shippingAddress.city}{" "}{order?.shippingAddress.postalCode}{" "}{order?.shippingAddress.address}</p>
-              <p>Pay method: {order?.paymentMethod}</p>
+              {order?.shippingAddress.map((o)=>(
+                <>
+                <p>Shipping address: {o?.city}{", "}{o?.postalCode}{", "}{o?.address}</p>
+                <p>Pay method: {order?.paymentMethod}</p>
+                </>
+              ))}
+              
             </div>
           </div> 
         </div>
     </div>
         
-        {/* 3*/}
-        <div class="columnB">
         
-        <div className="col-lg-4 col-sm-4 mb-lg-4 mb-5 mb-sm-0">
-          <div className="row">
-            <div className="col-md-4 center">
-              <div className="alert-info order-box">
-                <i className="fas fa-map-marker-alt"></i>
-              </div>
-            </div>
-            <div className="col-md-8 center">
-              <h5>
-                <strong> Deliver to</strong>
-              </h5>
-              <p>Address: {order?.shippingAddress.country}</p>
-              <p>Created : {format(order?.createdAt)}</p>
-            </div>
-            </div>
-            </div>
-                </div>
                 </div>
             </div>
           </div> 
