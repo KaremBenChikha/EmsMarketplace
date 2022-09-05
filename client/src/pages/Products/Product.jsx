@@ -2,7 +2,7 @@ import { Add, Remove } from "@material-ui/icons";
 import styled from "styled-components";
 import Footer from "../../components/Footer";
 import { mobile } from "../../responsive";
-import { useLocation } from "react-router-dom";
+//import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { publicRequest } from "../../requestMethods";
 import { addProduct } from "../../redux/cartRedux";
@@ -15,6 +15,7 @@ import { Link,useParams  } from 'react-router-dom'
  import { PRODUCT_CREATE_REVIEW_RESET } from '../../redux/constants/productConstants'
  import { useDispatch, useSelector } from 'react-redux'
  import Rating from '../../components/Rating/Rating'
+ import { useLocation } from "react-router";
  import {
   FavoriteBorderOutlined,
 } from "@material-ui/icons";
@@ -183,12 +184,13 @@ const ColoredLine = ({ color }) => (
 );
 
 const Product = ({match}) => {
-  const location = useLocation();
   const [product, setProduct] = useState({});
   const [quantity, setQuantity] = useState(1);
   const dispatch = useDispatch();
   //-------------------
-  const { productId } = useParams();
+  //const { productId } = useParams();
+  const location = useLocation();
+  const productId = location.pathname.split("/")[2];
   const [rating, setRating] = useState(0)
   const [comment, setComment] = useState('')
   const user = useSelector((state) => state.user.currentUser);
@@ -209,14 +211,24 @@ const Product = ({match}) => {
     
    }, [dispatch, match, successCreateReview])
 
-   const submitHandler = () => {
+   /*const submitHandler = () => {
     dispatch(
       createProductReview(productId, {
         rating: product.rating,
         comment: product.comment,
       })
     )
+  }*/
+
+  const submitHandler = () => {
+    dispatch(
+      createProductReview(productId, {
+        rating,
+        comment,
+      })
+    )
   }
+
 
   //---------------------
   const id2 = location.pathname.split("/")[2];
@@ -401,15 +413,18 @@ const Product = ({match}) => {
                    )}
                  
                    {user ? (
-                     <form className="form" onSubmit={submitHandler}>
-                     <div>
+                     <form className="comment-form" onSubmit={submitHandler}>
+                     {/*<div>
                         <br/>
                        <h2>Write a customer review</h2>
                        <br/>
-                     </div>
-                     <div>
-                       <label htmlFor="rating">Rating</label>
-                       <select id="rating" value={rating}
+                   </div>*/}
+                   <h2>Write a customer review</h2>
+                     <div className="comment-box">
+                     
+                     <div >
+                      
+                       <select  id="rating" value={rating}
                         onChange={(e) => setRating(e.target.value)}>
                            <option value="">Select</option>
                            <option value="1">1- Bad</option>
@@ -420,22 +435,24 @@ const Product = ({match}) => {
 
                        </select>
                      </div>
-                       <div>
-                       <label htmlFor="comment">Comment</label>
+                     <div >
                        <textarea
                          id="comment"
                          value={comment}
+                         placeholder="Comment" 
+                         rows="4"
+                         className="comment-header"
                          onChange={(e) => setComment(e.target.value)}
                        ></textarea>
                      </div>
-                    
-                     <div>
+                     
+                     <div className="comment-form-actions">
                        <label />
-                       <button className="primary" type="submit">
-                         Submit
+                       <button id="comment-reveal" className="primary" type="submit">
+                         Post Comment
                        </button>
                      </div>
-                     
+                     </div>
                    </form>
                      
                    ) : (<Message>Please <Link to='/login'

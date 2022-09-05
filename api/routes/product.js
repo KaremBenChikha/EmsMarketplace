@@ -104,14 +104,14 @@ router.post("/:id/review", async (req, res) => {
   const {name,rating , comment} =req.body;
   const product = await Product.findById(req.params.id);
 
-  if(product) {
+ /* if(product) {
     const alreadyReviewed = product.reviews.find(
       (r) => r.user?.toString() == req.user?._id.toString()
     );
   if(alreadyReviewed) {
     res.status(400);
-    //throw new Error("Product already Reviewed");
-  }
+    throw new Error("Product already Reviewed");
+  }*/
   const review ={
     rating: Number(rating),
     comment,
@@ -124,11 +124,8 @@ product.rating=
   product.reviews.length;
   await product.save()
   res.status(201).json({message:"Reviewed Added"})
-  } else {
-    res.status(400);
-    throw new Error("Product not Found");
   }
 
-});
+);
 
 module.exports = router;

@@ -53,10 +53,11 @@ export const createProductReview = (productId, review) => async (
         },
       }
 
-    await axios.post(`http://localhost:5000/api/products/${productId}/review`, review,config)
+      const { data } =await axios.post(`http://localhost:5000/api/products/${productId}/review`, review,config)
 
     dispatch({
       type: PRODUCT_CREATE_REVIEW_SUCCESS,
+      payload: data,
     })
   } catch (error) {
     dispatch({

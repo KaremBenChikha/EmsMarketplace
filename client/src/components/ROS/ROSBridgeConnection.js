@@ -1,0 +1,191 @@
+import React, {
+    Component
+  } from 'react';
+  import './ROSBridgeConnection.css';
+  
+  import {
+    Button,
+    TextField,
+    Stack,
+    Card,
+    Box,
+    Grid,
+    Typography,
+    Hidden,
+    Avatar,
+    Divider,
+    ListItem,
+    ListItemText,
+    List,
+    ListItemAvatar,
+    Container,
+    CardHeader,
+    CardContent,
+    Select,
+    MenuItem
+  } from '@mui/material';
+  
+  const ROSLIB = require("roslib");
+  
+  class ROSBridgeConnection extends Component {
+    constructor(props) {
+      super(props);
+  
+      // convert non ws or wss scheme to wss
+      // var env_ep = process.env.WS_ROSBRIDGE
+      var env_ep = props.url //'ws://localhost:9090'
+      console.log("********************",env_ep);
+      console.log("********************",props.url);
+      if(window._env_ && window._env_.WS_ROSBRIDGE){
+        const env_ep_split = window._env_.WS_ROSBRIDGE.split(':')
+        const scheme = env_ep_split[0]
+        if(scheme !== 'wss' || scheme !=='ws' ){
+          env_ep_split[0] = 'wss'
+          env_ep = env_ep_split.join(':')
+        }
+      }
+      
+      this.state = {
+        ros: null,
+        rosbridgeUrl: env_ep,
+        topicList: {'topics': [], 'types': []},
+        msgList: {},
+      };
+  
+      this.state.ros = new ROSLIB.Ros({
+        url: this.state.rosbridgeUrl
+      })
+  
+      this.state.ros.on('connection', () => {
+        console.log('Connected to websocket server.');
+        this.setState({
+          state: this.state
+        });
+        this.updateTopicList()
+      });
+  
+      this.state.ros.on('error', (error) => {
+        console.log('Error connecting to websocket server: ', error);
+        this.setRosInstance()
+      });
+  
+      this.state.ros.on('close', () => {
+        console.log('Connection to websocket server closed.');
+        this.setState({
+          state: this.state
+        });
+        this.setRosInstance()
+      });
+  
+      setInterval(() => {
+        //todo 
+        // add change image
+      },
+      1000);    
+  
+      this.rosbridgeUrlChange = this.rosbridgeUrlChange.bind(this)
+      this.updateRosConnection = this.updateRosConnection.bind(this)
+      this.updateTopicList = this.updateTopicList.bind(this)
+    }
+    setRosInstance(){
+      if(this.props.getRosInstance){
+        this.props.getRosInstance(this.state.ros, this.state.msgList, this.state.topicList)
+      }
+    }
+    updateRosConnection() {
+      if(this.state.ros){
+        if (this.state.ros.isConnected) {
+          this.state.ros.close()
+        } else {
+          this.state.ros.connect(this.state.rosbridgeUrl)
+        }
+      }
+    }
+  
+    updateTopicList() {
+      this.state.ros.getTopics((topics) => {
+        console.log("Getting topics...");
+  
+        topics.types.forEach(function(msg_name) {
+          if (!(msg_name in this.state.msgList)) {
+            this.getMsgInfo(msg_name)
+          }
+        }, this)
+  
+        this.setState({topicList: topics})
+        this.setRosInstance()
+      })
+    }
+  
+    getTopicType(topic_name) {
+      var index = this.state.topicList.topics.indexOf(topic_name)
+      if (index < 0) {
+        console.warn('topic is not in the topic list')
+        this.updateTopicList()
+        return
+      }
+      return this.state.topicList.types[index]
+    }
+  
+    getMsgInfo(msg_name) {
+      // console.log(msg_name)
+      var msgDetailesClient = new ROSLIB.Service({
+        ros: this.state.ros,
+        name: '/rosapi/message_details',
+        serviceType: 'rosapi/MessageDetails'
+      });
+  
+      var request = new ROSLIB.ServiceRequest({
+        type: msg_name
+      });
+  
+      msgDetailesClient.callService(request, (result) => {
+        console.log("Getting msginfo... ", msg_name);
+  
+        var temp = this.state.msgList
+        result.typedefs.forEach((data) => {
+          // console.log(data.type, data)
+          // this.state.msgList[data.type] = data
+          temp[data.type] = data
+        }, this)
+  
+        this.setState({
+          msgList: temp
+        })
+  
+      });
+    }
+  
+    rosbridgeUrlChange(event) {
+      this.setState({
+        rosbridgeUrl: event.target.value
+      });
+    }
+  
+    render() {
+    
+      return ( 
+          <div>
+             <Stack
+            direction="row"
+            justifyContent="center"
+            alignItems="center"
+            spacing={2}
+          >
+            <label> rosbridgeURL: </label> 
+            <input type = "text" style={{width:'20em'}} value = { this.state.rosbridgeUrl }
+              onChange = { this.rosbridgeUrlChange } /> 
+            <button onClick = { this.updateRosConnection }> 
+              { (this.state.ros && this.state.ros.isConnected) ? 'Disconnect' : 'Connect'} 
+            </button> 
+            <button onClick = { this.updateTopicList } >
+              update topic list 
+            </button> 
+            </Stack>
+          </div>
+      );
+    }
+  }
+  
+  
+  export default ROSBridgeConnection;
