@@ -34,10 +34,7 @@ export default function Sidebar() {
               Statistics
             </li>
             </Link>
-            <li className="sidebarListItem">
-              <TrendingUp className="sidebarIcon" />
-              Sales
-            </li>
+            
           </ul>
         </div>
         <div className="sidebarMenu">

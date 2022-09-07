@@ -25,13 +25,14 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/login">
-          <Login />
-        </Route>
+              <Route path="/login">
+                <Login />
+              </Route>
         {admin && (
           <>
             <Topbar />
             <div className="container">
+              
               <Sidebar />
               <Route exact path="/">
                 <Home />

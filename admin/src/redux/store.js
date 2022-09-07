@@ -23,6 +23,15 @@ const persistConfig = {
   storage,
 };
 
+//LOGIN
+const userInfoFromStorage = localStorage.getItem('userInfo')
+? JSON.parse(localStorage.getItem('userInfo'))
+: null
+
+const initialState = {
+  userLogin: { userInfo: userInfoFromStorage },
+ }
+
 const rootReducer = combineReducers({
   user: userReducer,
   product: productReducer,
@@ -37,6 +46,7 @@ const rootReducer = combineReducers({
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
+  initialState,
   reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
