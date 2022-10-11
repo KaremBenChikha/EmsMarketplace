@@ -17,7 +17,7 @@ export default function Payment() {
         <div className="bg-white my-2 p-1 flex border border-gray-200 rounded">
           <input
             onChange={handleChange}
-            value={userData["maxpower"] || ""}
+            
             name="maxpower"
             placeholder="Max Power*"
             className="p-1 px-2 appearance-none outline-none w-full text-gray-800"
@@ -29,7 +29,7 @@ export default function Payment() {
         <div className="bg-white my-2 p-1 flex border border-gray-200 rounded">
           <input
             onChange={handleChange}
-            value={userData["maxweight"] || ""}
+            //value={userData["maxweight"] || ""}
             name="maxweight"
             placeholder="Max Weight*"
             type="text"
@@ -42,7 +42,7 @@ export default function Payment() {
         <div className="bg-white my-2 p-1 flex border border-gray-200 rounded">
           <input
             onChange={handleChange}
-            value={userData["Lifetime"] || ""}
+            //value={userData["Lifetime"] || ""}
             name="Lifetime"
             placeholder="Lifetime*"
             type="text"
@@ -55,7 +55,7 @@ export default function Payment() {
         <div className="bg-white my-2 p-1 flex border border-gray-200 rounded">
           <input
             onChange={handleChange}
-            value={userData["Autonomy"] || ""}
+            //value={userData["Autonomy"] || ""}
             name="Autonomy"
             placeholder="Autonomy*"
             type="text"

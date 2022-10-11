@@ -16,7 +16,7 @@ export const sliderItems = [
     {
       id: 3,
       img: "https://voit.de/wp-content/uploads/2018/07/video_teaserbild_08_CAD_04.jpg",
-      title: "LOUNGEWEAR LOVE",
+      title: "Choose The Features And Let Us Help You Get What You Want",
       desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
       bg: "fbf0f4",
     },
