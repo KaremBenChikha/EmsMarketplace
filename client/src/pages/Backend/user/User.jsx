@@ -9,7 +9,7 @@ import {
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {getUserDetails2} from "../../../redux/actions/UserActions"
+import {getUserDetails2} from "../../../redux/actions/userActions"
 import { useEffect } from "react";
 import "./user.css";
 
