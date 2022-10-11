@@ -4,6 +4,11 @@ import cartReducer from "./reducers/CartReducers";
 import userReducer from "./userRedux";
 import { orderCreateReducer ,orderDetailsReducer,orderPayReducer,orderListMyReducer} from './reducers/OrderReducers';
 import {productReviewCreateReducer ,productListReducer} from './reducers/productReducers'
+import productReducer from "./productRedux";
+import postReducer from "./postRedux";
+import orderReducer from "./orderRedux";
+import { orderListReducer,orderDeliveredReducer} from './reducers/OrderReducers';
+import { userDetailsReducer} from './reducers/userReducers';
 import {
   persistStore,
   persistReducer,
@@ -58,7 +63,13 @@ const rootReducer = combineReducers({
   orderDetails: orderDetailsReducer,
   orderPay: orderPayReducer,
   //orderPay: orderPayReducer,
-  orderListMy: orderListMyReducer
+  orderListMy: orderListMyReducer,
+  product: productReducer,
+  post: postReducer,
+  order: orderReducer,
+  ordersL: orderListReducer,
+  orderDelivered: orderDeliveredReducer,
+  userDetails: userDetailsReducer,
  });
 
 

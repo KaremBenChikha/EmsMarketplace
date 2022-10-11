@@ -1,6 +1,6 @@
 import { Add, Remove } from "@material-ui/icons";
 import styled from "styled-components";
-import Footer from "../../components/Footer";
+import Footer from "../../components/Footer/Footer";
 import { mobile } from "../../responsive";
 //import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -19,6 +19,8 @@ import { Link,useParams  } from 'react-router-dom'
  import {
   FavoriteBorderOutlined,
 } from "@material-ui/icons";
+import Navbar from "../../components/navbar/Navbar";
+import Navbar2 from "../../components/Navbar2";
 
  const Container = styled.div``;
 const Wrapper = styled.div`
@@ -118,6 +120,19 @@ const AmountContainer = styled.div`
   align-items: center;
   font-weight: 700;
 `;
+const Dropdown = styled.div`
+  
+  display: flex;
+  align-items: center;
+  color:  rgb(13, 14, 14);
+`;
+
+const Textarea = styled.div`
+  
+  display: flex;
+  align-items: center;
+  color:  rgb(13, 14, 14);
+`;
 
 const Amount = styled.span`
   width: 30px;
@@ -131,16 +146,17 @@ const Amount = styled.span`
 `;
 
 const Button = styled.button`
-  padding: 15px;
-  border: 2px solid teal;
-  background-color: white;
-  cursor: pointer;
-  font-weight: 500;
-  margin-right:12px;
-  box-sizing: content-box;
-  &:hover {
-    background-color: #f8f4f4;
-  }
+    border:none;
+    padding: 12px 40px;
+    background-color: #1c73d0;
+    color:white;
+    cursor: pointer;
+    font-weight: 500;
+    border-radius: 8px;
+    min-width: 50px;
+    margin-right:12px;
+    box-sizing: content-box;
+    text-align: center;
 `;
 const Button2 = styled.button`
     border:none;
@@ -258,6 +274,9 @@ const Product = ({match}) => {
   
   
   return (
+    <>
+    <Navbar2/>
+      <Navbar/>
     <Container>
 
       <Wrapper>
@@ -422,7 +441,7 @@ const Product = ({match}) => {
                    <h2>Write a customer review</h2>
                      <div className="comment-box">
                      
-                     <div >
+                     <Dropdown>
                       
                        <select  id="rating" value={rating}
                         onChange={(e) => setRating(e.target.value)}>
@@ -434,8 +453,9 @@ const Product = ({match}) => {
                            <option value="5">5- Excelent</option>
 
                        </select>
-                     </div>
-                     <div >
+                     </Dropdown>
+                      <br/>
+                     <Textarea>
                        <textarea
                          id="comment"
                          value={comment}
@@ -444,13 +464,13 @@ const Product = ({match}) => {
                          className="comment-header"
                          onChange={(e) => setComment(e.target.value)}
                        ></textarea>
-                     </div>
+                     </Textarea>
                      
                      <div className="comment-form-actions">
-                       <label />
-                       <button id="comment-reveal" className="primary" type="submit">
+                       <br/>
+                       <Button id="comment-reveal" className="primary" type="submit">
                          Post Comment
-                       </button>
+                       </Button>
                      </div>
                      </div>
                    </form>
@@ -476,6 +496,7 @@ const Product = ({match}) => {
         <Products/>
       <Footer />
     </Container>
+    </>
   );
 };
 

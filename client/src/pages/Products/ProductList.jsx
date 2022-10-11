@@ -1,15 +1,18 @@
 import styled from "styled-components";
 import Products from "../../components/Products/Products";
 import Newsletter from "../../components/newsletter/Newsletter";
-import Footer from "../../components/Footer";
+import Footer from "../../components/Footer/Footer";
 import { mobile } from "../../responsive";
 import { useLocation } from "react-router";
 import { useState } from "react";
+import Navbar from "../../components/navbar/Navbar";
+import Navbar2 from "../../components/Navbar2";
 
 const Container = styled.div``;
 
 const Title = styled.h1`
   margin: 20px;
+  text-transform: capitalize;
 `;
 
 const FilterContainer = styled.div`
@@ -51,6 +54,9 @@ const ProductList = () => {
   };
 
   return (
+    <>
+    <Navbar2/>
+      <Navbar/>
     <Container>
       
       <Title>{cat}</Title>
@@ -66,9 +72,10 @@ const ProductList = () => {
         </Filter>
       </FilterContainer>
       <Products cat={cat} filters={filters} sort={sort} />
-      <Newsletter />
+    
       <Footer />
     </Container>
+    </>
   );
 };
 

@@ -4,6 +4,9 @@ import {useDispatch,useSelector} from 'react-redux'
 import { savePaymentMethod } from '../../redux/actions/CartActions'
 import styled from "styled-components";
 import { mobile } from "../../responsive";
+import Footer from "../../components/Footer/Footer"
+import Navbar from "../../components/navbar/Navbar";
+import Navbar2 from "../../components/Navbar2";
 
 const Container = styled.div`
   width: 100vw;
@@ -47,6 +50,18 @@ const Input = styled.input`
 const Agreement = styled.span`
   font-size: 12px;
   margin: 20px 0px;
+  color: #acaaaa;
+`;
+
+
+const Wrap = styled.div`
+  width:100%;
+  margin:auto;
+  max-width:900px;
+  min-height:400px;
+  margin-top: 30px;
+  position:relative;
+box-shadow:0 12px 15px 0 rgba(145, 143, 143, 0.24),0 17px 50px 0 rgba(94, 89, 89, 0.19);
 `;
 
 const Button = styled.button`
@@ -70,31 +85,42 @@ const PaymentScreen = ({history}) => {
     }
   return (
     <>
+    <Navbar2/>
+      <Navbar/>
     <Container>
     <Wrapper>
-      <Form onSubmit={submitHandler}>
-          <Title>SELECT PAYMENT METHOD</Title>
-          <br/>
-    
-          <Input 
-              type="radio" 
-              value={paymentMethod}
-              required
-              onChange={(e)=> setpaymentMethod(e.target.value)}
+      
+    <Wrap>
+  <div class="login-html">
+    <input id="tab-1" type="radio" name="tab" class="sign-in" checked /><label for="tab-1" class="tab">SELECT PAYMENT METHOD</label>
+    <div class="login-form">
+      <div class="sign-in-htm">
+        <div class="group">
+          <label for="user" class="label">Paypal or Credit Card</label>
+          <input 
+          class="input"
+          value={paymentMethod}
+          type="radio" 
+          required
+          onChange={(e)=> setpaymentMethod(e.target.value)}
           />
-          <label >Paypal or Credit Card</label>
+        </div>
+        <div class="group">
+          <input type="submit" class="button" onClick={submitHandler} value="Continue" />
+        </div>
+        <br/>
           
-          
-          <br/>
           <Agreement>
             By creating an account, I consent to the processing of my personal
             data in accordance with the <b>PRIVACY POLICY</b>
           </Agreement>
-      
-          <Button type='submit'>Continue</Button>
-      </Form>
+      </div>
+    </div>
+  </div>
+</Wrap>
     </Wrapper>
     </Container>
+    <Footer/>
     </>
   )
 }

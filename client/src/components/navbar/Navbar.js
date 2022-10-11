@@ -23,8 +23,8 @@ function Navbar() {
             <div class="sub-menu-1">
               <ul>
                 <li><a href='/products/battery'>Battery</a></li>
-                <li><a href='/products/fuelcell'>FuelCell</a></li>
-                <li><a href='/products/balanceofplant'>BalanceOfPlant</a></li>
+                <li><a href='/products/fuelcell'>Fuel Cell</a></li>
+                <li><a href='/products/balanceofplant'>Balance Of Plant</a></li>
               </ul>
             </div>
           </li>
@@ -49,7 +49,7 @@ function Navbar() {
             </div>
           </li>
 
-          <li className='nav-item'><a href='/ros' >ROS</a></li>
+          <li className='nav-item'><a href='/mainn' >ROS</a></li>
           <li className='nav-item'>
           <a href='#' >News</a>
             <div class="sub-menu-1">

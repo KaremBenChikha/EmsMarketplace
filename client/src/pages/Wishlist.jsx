@@ -2,15 +2,24 @@ import React from 'react'
 import { Add, Remove } from "@material-ui/icons";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-import Footer from "../components/Footer";
+import Footer from "../components/Footer/Footer";
 import { mobile } from "../responsive";
 import StripeCheckout from "react-stripe-checkout";
 import { useEffect, useState } from "react";
 import { userRequest } from "../requestMethods";
 import { useHistory } from "react-router";
+import Navbar from "../components/navbar/Navbar";
+import Navbar2 from "../components/Navbar2";
 
 const KEY = process.env.REACT_APP_STRIPE;
 
+
+const Footer2 = styled.div`
+position:absolute;
+
+width:100%;
+height:60px;            
+`;
 const Container = styled.div``;
 
 const Wrapper = styled.div`
@@ -188,6 +197,8 @@ const Wishlist = () => {
     }, [stripeToken, cart.total, history]);
     return (
       <>
+      <Navbar2/>
+      <Navbar/>
       <Container>
         <Wrapper>
           <Title>My Wishlist</Title>
@@ -223,7 +234,9 @@ const Wishlist = () => {
             
           </Bottom>
         </Wrapper>
+        <Footer2>
         <Footer />
+      </Footer2>
       </Container>
       </>
     );

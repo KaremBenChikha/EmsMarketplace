@@ -5,6 +5,10 @@ import { useEffect } from "react";
 import { listMyOrders } from "../../redux/actions/OrderActions";
 import { useDispatch } from "react-redux";
 import './trackOrders.css'
+import Footer from "../../components/Footer/Footer"
+import Navbar from "../../components/navbar/Navbar";
+import Navbar2 from "../../components/Navbar2";
+
 const KEY = process.env.REACT_APP_STRIPE;
 
 const Container = styled.div``;
@@ -177,6 +181,8 @@ useEffect(()=> {
  
   return (
     <>
+     <Navbar2/>
+      <Navbar/>
     <Container>
       <Wrapper>
         <Top>
@@ -224,8 +230,9 @@ useEffect(()=> {
 
         </Info>
       </Top>
-    </Wrapper>   
+    </Wrapper>
 </Container> 
+<Footer/>
     </>
   );
 };

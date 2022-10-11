@@ -15,6 +15,7 @@ import axios from 'axios'
    USER_UPDATE_PROFILE_SUCCESS,
  } from '../constants/userConstants'
  import { useSelector } from "react-redux";
+ import { useHistory } from 'react-router-dom'
 
  export const login = (email, password) => async (dispatch) => {
    try {
@@ -131,3 +132,75 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
     })
   }
 }
+
+//GET DETAILS
+export const getUserDetails2 = (id) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: USER_DETAILS_REQUEST,
+    })
+
+    const token = window.localStorage.getItem("currentUser")
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  
+    const {data} = await axios.get(`http://localhost:5000/api/users/find/${id}`,config);
+
+    dispatch({
+      type: USER_DETAILS_SUCCESS,
+      payload: data,
+    })
+  } catch (error) {
+      const message = error.response && error.response.data.message
+      ? error.response.data.message
+      : error.message;
+      
+    dispatch({
+      type: USER_DETAILS_FAIL,
+      payload: message,
+    });
+    
+  }
+};
+
+export const forgottenPassword = (email) => async (dispatch) => {
+  try {
+    dispatch({
+      type: USER_LOGIN_REQUEST,
+    })
+    const history = useHistory()
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
+
+    const { data } = await axios.post(
+      '/api/auth/requestPasswordReset',
+      { email },
+      config
+    )
+
+    dispatch({
+      type: USER_LOGIN_SUCCESS,
+      payload: data,
+    })
+
+    history.push(`/emailsent/${data}/${true}`);
+    localStorage.setItem('userInfo', JSON.stringify(data))
+  } catch (error) {
+    dispatch({
+      type: USER_LOGIN_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    })
+  }
+}
+
+

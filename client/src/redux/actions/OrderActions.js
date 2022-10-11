@@ -14,8 +14,17 @@ import {
     ORDER_LIST_MY_FAIL,
     ORDER_LIST_MY_REQUEST,
   } from '../constants/orderConstants'
+
+  import {
+    ORDER_LIST_SUCCESS,
+    ORDER_LIST_FAIL,
+    ORDER_LIST_REQUEST,
+    ORDER_DELIVERED_REQUEST,
+    ORDER_DELIVERED_SUCCESS,
+    ORDER_DELIVERED_FAIL
+  } from '../constants/orderConstants'
   import {CART_CLEAR_ITEMS} from '../constants/CartConstants'
-  import { logout  } from './userActions';
+  import { logout  } from './UserActions';
   
 //CREATE ORDER
 export const createOrder = (order) => async (dispatch, getState) => {
@@ -164,4 +173,65 @@ export const listMyOrders = () => async (dispatch) => {
     });
   }
 };
+//ORDER DELIVER
+export const deliverOrder = (order) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: ORDER_DELIVERED_REQUEST,
+    })
+
+    const token = window.localStorage.getItem("currentUser")
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  
+    const {data} = await axios.put(`http://localhost:5000/api/orders/${order._id}/delivered`,{},config);
+
+    dispatch({
+      type: ORDER_DELIVERED_SUCCESS,
+      payload: data,
+    })
+  } catch (error) {
+      const message = error.response && error.response.data.message
+      ? error.response.data.message
+      : error.message;
+      
+    dispatch({
+      type: ORDER_DELIVERED_FAIL,
+      payload: message,
+    });
+    
+  }
+};
+//GET ALL ORDERS
+export const listOrders = () => async (dispatch) => {
+  try {
+    dispatch({ type: ORDER_LIST_REQUEST })
+
+    const token = window.localStorage.getItem("currentUser")
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    const { data } = await axios.get('http://localhost:5000/api/orders', config)
+
+    dispatch({
+      type: ORDER_LIST_SUCCESS,
+      payload: data,
+    })
+  } catch (error) {
+    dispatch({
+      type: ORDER_LIST_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    })
+  }
+}
 

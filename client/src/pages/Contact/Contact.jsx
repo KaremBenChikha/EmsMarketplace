@@ -1,9 +1,11 @@
 import React from 'react';
-import Footer from "../../components/Footer";
+import Footer from "../../components/Footer/Footer";
 import styled from "styled-components";
 import emailjs from 'emailjs-com'
 import { useState ,useRef} from 'react';
 import './contact.css'
+import Navbar from "../../components/navbar/Navbar";
+import Navbar2 from "../../components/Navbar2";
 
 const Alert = styled.p`
   position: relative;
@@ -43,7 +45,8 @@ export default function Contact() {
   const [message2, setMessage2] = useState('');
   return (
     <>
- 
+  <Navbar2/>
+    <Navbar/>
     <div class="contact3 py-5">
   <div class="row no-gutters">
     <div class="container">

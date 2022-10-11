@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { mobile } from "../../responsive";
 import { useState } from "react";
 import "./styles_filter.css";
+import Footer from "../../components/Footer/Footer";
 import { dataList } from '../../components/Rating/constants';
 import { useEffect } from "react";
 import axios from "axios";
@@ -10,6 +11,8 @@ import List from '../../components/List/List'
 import Search from '../../components/Search/Search'
 import Empty from '../../components/Partials/Empty/Empty'
 import './products.css'
+import Navbar from "../../components/navbar/Navbar";
+import Navbar2 from "../../components/Navbar2";
 
 const Container = styled.div``;
 
@@ -216,7 +219,9 @@ const applyFilters = () => {
 */
 
 return (
- 
+ <>
+    <Navbar2/>
+      <Navbar/>
   <Container>
   
       <br/>
@@ -240,8 +245,9 @@ return (
       </Info>
   </Bottom>
   </Wrapper>
+  <Footer />
   </Container>
-
+  </>
 )
 }
 

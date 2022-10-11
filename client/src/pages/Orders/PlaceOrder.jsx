@@ -8,6 +8,9 @@ import { ORDER_CREATE_RESET } from "../../redux/constants/orderConstants";
 import { useDispatch } from "react-redux";
 import {createOrder} from "../../redux/actions/OrderActions"
 import './pro.css';
+import Footer from "../../components/Footer/Footer"
+import Navbar from "../../components/navbar/Navbar";
+import Navbar2 from "../../components/Navbar2";
 
 const KEY = process.env.REACT_APP_STRIPE;
 
@@ -215,6 +218,9 @@ const placeOrderHandler =() => {
 
  
   return (
+    <>
+    <Navbar2/>
+      <Navbar/>
     <Container>
      
       <Wrapper>
@@ -229,17 +235,17 @@ const placeOrderHandler =() => {
           </TopTexts>  
         </Top>
       
-        <div class="alert alert-info" role="alert">  
+        <div class="alert  infoo" role="alert">  
            <div class="rowA">
              <div class="columnB">
                 <div className="col-lg-4 col-sm-4 mb-lg-4 mb-5 mb-sm-0">
                   <div className="row">
                     <div className="col-md-4 center">
-                      <div className="alert-info order-box">
+                      <div className="infoo order-box">
                         <i class="fas fa-user"></i>
                         </div>
                       </div>
-                    <div className="col-md-8 center">
+                    <div className="col-md-0 center">
                       <h5>
                         <strong>Customer</strong>
                       </h5>
@@ -256,11 +262,11 @@ const placeOrderHandler =() => {
         <div className="col-lg-4 col-sm-4 mb-lg-4 mb-5 mb-sm-0">
           <div className="row">
             <div className="col-md-4 center">
-              <div className="alert-info order-box">
+              <div className="infoo order-box">
                 <i className="fas fa-truck-moving"></i>
               </div>
             </div>
-            <div className="col-md-8 center">
+            <div className="col-md-0 center">
               <h5>
                 <strong> Order info</strong>
               </h5>
@@ -278,11 +284,11 @@ const placeOrderHandler =() => {
         <div className="col-lg-4 col-sm-4 mb-lg-4 mb-5 mb-sm-0">
           <div className="row">
             <div className="col-md-4 center">
-              <div className="alert-info order-box">
+              <div className="infoo order-box">
                 <i className="fas fa-map-marker-alt"></i>
               </div>
             </div>
-            <div className="col-md-8 center">
+            <div className="col-md-0 center">
               <h5>
                 <strong> Deliver to</strong>
               </h5>
@@ -356,8 +362,10 @@ const placeOrderHandler =() => {
         </Bottom>
 
       </Wrapper>
-      
+     
     </Container>
+     <Footer/>
+     </>
   );
 };
 

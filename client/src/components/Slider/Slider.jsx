@@ -3,7 +3,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import { sliderItems } from "../../data";
 import { mobile } from "../../responsive";
-
+import { Link,useParams  } from 'react-router-dom'
 const Container = styled.div`
   width: 100%;
   height: 100vh;
@@ -49,7 +49,7 @@ const Slide = styled.div`
 
 const ImgContainer = styled.div`
   height: 100%;
-  flex: 1;
+
 `;
 
 const Image = styled.img`
@@ -59,6 +59,7 @@ const Image = styled.img`
 const InfoContainer = styled.div`
   flex: 1;
   padding: 20px;
+
 `;
 
 const Title = styled.h1`
@@ -107,7 +108,10 @@ const Slider = () => {
               
               <Title>{item.title}</Title>
               <Desc>{item.desc}</Desc>
-              <Button>SHOW NOW</Button>
+              <Link to='/mainn'>
+                <Button >START NOW</Button>
+              </Link>
+              
               
             </InfoContainer>
           

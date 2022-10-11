@@ -1,10 +1,11 @@
 import { Add, Remove } from "@material-ui/icons";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-import Footer from "../../components/Footer";
+import Footer from "../../components/Footer/Footer";
 import { mobile } from "../../responsive";
 import { useHistory } from "react-router";
-
+import Navbar from "../../components/navbar/Navbar";
+import Navbar2 from "../../components/Navbar2";
 
 const KEY = process.env.REACT_APP_STRIPE;
 
@@ -139,6 +140,12 @@ const Link = styled.a`
 const SummaryTitle = styled.h1`
   font-weight: 200;
 `;
+const Footer2 = styled.div`
+position:absolute;
+
+width:100%;
+height:60px;            
+`;
 
 const SummaryItem = styled.div`
   margin: 30px 0px;
@@ -174,15 +181,17 @@ const placeOrderHandler =() => {
 
  
   return (
+    <>
+    <Navbar2/>
+      <Navbar/>
     <Container>
-      
-      <br/>
-     
       <Wrapper>
+      
         <Top>
-        <Link to="/products/battery">
-          <TopButton>CONTINUE SHOPPING</TopButton>
-          </Link>
+        <Link to="/">
+          <TopButton >CONTINUE SHOPPING</TopButton>
+        </Link>
+
           <TopTexts>
             <TopText>Shopping Bag ({quantity})</TopText>
             <TopText>Your Wishlist (0)</TopText>
@@ -230,8 +239,11 @@ const placeOrderHandler =() => {
 
         </Bottom>
       </Wrapper>
-      <Footer />
+      <Footer2>
+        <Footer />
+      </Footer2>
     </Container>
+    </>
   );
 };
 

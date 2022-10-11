@@ -5,6 +5,9 @@ import styled from "styled-components";
 import "./blog.css";
 import axios from "axios";
 import { useLocation } from "react-router";
+import Footer from "../../components/Footer/Footer";
+import Navbar from "../../components/navbar/Navbar";
+import Navbar2 from "../../components/Navbar2";
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
@@ -18,9 +21,12 @@ export default function Home() {
   }, [search]);
   return (
     <>
+    <Navbar2/>
+    <Navbar/>
       <Header />
       <br/>
         <Posts posts={posts} /> 
+        <Footer/>
     </>
   );
 }

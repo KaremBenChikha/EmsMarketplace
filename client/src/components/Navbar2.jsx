@@ -10,7 +10,7 @@ import {
   FavoriteBorderOutlined
 } from "@material-ui/icons";
 
-const Container = styled.div`
+const Container2 = styled.div`
   height: 60px;
   ${mobile({ height: "50px" })}
 `;
@@ -87,7 +87,7 @@ const Navbar1 = () => {
   const quantity = useSelector(state=>state.cart.quantity)
   return (
     
-    <Container>
+    <Container2>
       <Wrapper>
         <Left>
           <Language>EN</Language>
@@ -99,38 +99,45 @@ const Navbar1 = () => {
           </Link>
         </Center>
         <Right>
-        
-        
-
-        
+ 
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
 
         {user ? (
- 
-        <NavDropdown title={user.username} id='username'>
-          <NavDropdown.Item onClick={logoutHandler}>
-            Logout
-          </NavDropdown.Item>
-          <NavDropdown.Item >
-            <Link className="link" to="/trackOrders">
-            Track orders
-            </Link>
-          </NavDropdown.Item>
-        </NavDropdown>
+          <>
+
+        <div class="relative">
+        <button class="inline-block font-normal text-center px-3 py-2 leading-normal text-base rounded cursor-pointer text-black bg-white-600  dropdown-toggle" type="button" data-toggle="dropdown">
+          {user.username}
+        </button>
+          <div class="dropdown-menu hidden z-20 float-left py-2 mt-1 text-base text-gray-900 list-none text-left border border-gray-300 bg-white rounded shadow">
+            <a class="block w-full py-1 px-6 font-normal text-gray-900 bg-transparent border-0 hover:text-gray-900 hover:bg-gray-100" className="link" href="#">
+              <Link className="link" to="/trackOrders">
+                Track orders
+              </Link>
+            </a>
+            <br/>
+            <a class="block w-full py-1 px-6 font-normal text-gray-900 bg-transparent border-0 hover:text-gray-900 hover:bg-gray-100" className="link" onClick={logoutHandler} >Logout</a>
+            
+          </div>
+        </div>
+
+        
+        </>
        
       ) : (
         <>
-        
-            <Container/>
               <Link className="link"
                to='/login'>
-                  <i className='fas fa-user'></i> Sign In
+                  <MenuItem><i className='fas fa-user'></i> Sign In</MenuItem>
               </Link>
               <Link className="link" to="/register">
                   <MenuItem>REGISTER</MenuItem>
-              </Link></>
+              </Link>
+              </>
+
        
       )}
+
 
           <Link className="link" to="/wishlist">
             <MenuItem>
@@ -148,9 +155,9 @@ const Navbar1 = () => {
 
           
 
-        </Right>
+          </Right>
       </Wrapper>
-    </Container>
+    </Container2>
    
   );
 };

@@ -1,11 +1,14 @@
 import React from "react";
 import Categories from "../components/Categories/Categories";
-import Footer from "../components/Footer";
+import Footer from "../components/Footer/Footer";
 import Newsletter from "../components/newsletter/Newsletter";
 import Products from "../components/Products/Products";
 import Slider from "../components/Slider/Slider";
 import { mobile } from "../responsive";
 import styled from "styled-components";
+import About from "../components/About/About";
+import Navbar from "../components/navbar/Navbar";
+import Navbar2 from "../components/Navbar2";
 
 const InfoContainer = styled.div`
   flex: 1;
@@ -20,7 +23,8 @@ const Title = styled.h1`
 const Home = () => {
   return (
     <div>
-      
+      <Navbar2/>
+      <Navbar/>
       <Slider />
       <Categories />
         <InfoContainer>
@@ -28,6 +32,8 @@ const Home = () => {
         </InfoContainer>
       <Products/>
       <Newsletter/>
+      <About/>
+      
       <Footer/>
     </div>
   );

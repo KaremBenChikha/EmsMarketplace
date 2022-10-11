@@ -2,7 +2,6 @@ import Product from "./pages/Products/Product";
 import Home from "./pages/Home";
 import ProductList from "./pages/Products/ProductList";
 import Register from "./pages/Login_Rege/Register";
-import Login from "./pages/Login_Rege/Login";
 import Cart from "./pages/Orders/Cart";
 import Products from "./pages/Products/Products";
 import Applications from "./pages/Applications/Applications";
@@ -11,7 +10,6 @@ import TrackOrders from "./pages/Orders/TrackOrders";
 import './App.css';
 import Single from "./pages/SinglePost/SinglePost";
 //import Wishlist  from './components/wishlist/Wishlist';
-
 import {
   BrowserRouter as Router,
   Switch,
@@ -30,19 +28,38 @@ import Navbar from "./components/navbar/Navbar";
 import Navbar2 from "./components/Navbar2";
 import ApplicationType from "./pages/Applications/ApplicationType";
 import Faq from "./pages/FAQ/Faq";
+import Steps from "./pages/ROS/Steps";
+import Mainn from "./pages/ROS/Mainn";
+
+import HomeBackend from "./pages/Backend/home/HomeBackend";
+import UserList from "./pages/Backend/userList/UserList";
+import User from "./pages/Backend/user/User";
+import NewUser from "./pages/Backend/newUser/NewUser";
+import OrderList from "./pages/Backend/orders/OrderList";
+import OrderD from "./pages/Backend/orders/OrderD";
+import ProductAnalytics from "./pages/Backend/analytics/ProductAnalytics";
+import ProductList2 from "./pages/Backend/productList2/ProductList2";
+import Topbar from "./components/Backend/topbar/Topbar";
+import Sidebar from "./components/Backend/sidebar/Sidebar";
+import Login2 from "./pages/Login_Rege/Login2";
+import ForgottenPassword from "./pages/ForgottenPassword/ForgottenPassword";
+//import Write2 from "./pages/Backend/writeArticle/Write2";
 
 const App = () => {
   const user = useSelector((state) => state.user.currentUser);
+  const admin = useSelector((state) => state.user?.currentUser?.isAdmin);
+
   //const userLogin = useSelector((state) => state.userLogin)
   //const { user  } = userLogin
+  
 
   return (
     <Router>
-      <Navbar2/>
-      <Navbar/>
+     
       <Switch>
         <Route exact path="/">
-          <Home />
+          {admin ? <Redirect to="/backend" /> : <Home />}
+          
         </Route>
         <Route path="/products/:category">
           <ProductList />
@@ -80,15 +97,70 @@ const App = () => {
         <Route path="/trackOrders">
           <TrackOrders />
         </Route>
+        
+        <Route path="/steps">
+          <Steps/>
+        </Route>
+        <Route path="/mainn">
+          <Mainn/>
+        </Route>
+        <Route path="/forgottenpassword">
+          <ForgottenPassword/>
+        </Route>
         <Route path="/FAQ" component={Faq}/>
         <Route path="/shipping" component={ShippingScreen}/>
         <Route path="/payment" component={PaymentScreen}/>
         <Route path="/placeorder" component={PlaceOrder}/>
         <Route path="/order/:id" component={OrderScreen}/>
-        <Route path="/login">{user ? <Redirect to="/" /> : <Login />}</Route>
         <Route path="/register">
           {user ? <Redirect to="/" /> : <Register />}
         </Route>
+        <Route path="/login">
+          {user ? <Redirect to="/" /> : <Login2/>}
+          
+        </Route>
+
+      
+       
+        {/********** backend ************************************************************************************************/}
+       
+
+        
+        {admin && (
+          <>
+          <Topbar/>
+        <div className="container2">
+        <Sidebar />
+        <Route exact path="/backend">
+            <HomeBackend />
+        </Route>
+        <Route path="/backend/users">
+            <UserList />
+        </Route>
+        <Route path="/backend/user/:userId">
+            <User />
+        </Route>
+        <Route path="/backend/newUser">
+            <NewUser />
+        </Route>
+        <Route path="/backend/orders">
+            <OrderList />
+        </Route>
+        <Route path="/backend/order/:orderId">
+            <OrderD />
+        </Route>
+        <Route path="/backend/analytics">
+            <ProductAnalytics />
+        </Route>
+        <Route path="/backend/products">
+            <ProductList2 />
+        </Route>
+    
+        
+        </div>
+        </>
+        )}
+  
       </Switch>
     </Router>
   );

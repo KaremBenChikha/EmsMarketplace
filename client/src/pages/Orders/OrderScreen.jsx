@@ -10,7 +10,10 @@ import {getOrderDetails,payOrder} from "../../redux/actions/OrderActions"
 import {PayPalButton} from "react-paypal-button-v2";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
+import Footer from "../../components/Footer/Footer"
 import './pro.css';
+import Navbar from "../../components/navbar/Navbar";
+import Navbar2 from "../../components/Navbar2";
 
 const KEY = process.env.REACT_APP_STRIPE;
 
@@ -220,6 +223,10 @@ const [stripeToken, setStripeToken] = useState(null);
     history.push("/trackOrders")
   }
   return (
+    
+<>
+<Navbar2/>
+      <Navbar/>
     <Container>
     
       <Wrapper>
@@ -243,28 +250,25 @@ const [stripeToken, setStripeToken] = useState(null);
           }
           
         </Top>
-<div class="alert alert-info" role="alert">  
-    <div class="rowA">
-        <div class="columnB">
-        
-          
-            <div className="col-lg-4 col-sm-4 mb-lg-4 mb-5 mb-sm-0">
-              <div className="row">
-                <div className="col-md-4 center">
-                  <div className="alert-info order-box">
-                    <i class="fas fa-user"></i>
+        <div class="alert  infoo" role="alert">  
+           <div class="rowA">
+             <div class="columnB">
+                <div className="col-lg-4 col-sm-4 mb-lg-4 mb-5 mb-sm-0">
+                  <div className="row">
+                    <div className="col-md-4 center">
+                      <div className="infoo order-box">
+                        <i class="fas fa-user"></i>
+                        </div>
+                      </div>
+                    <div className="col-md-0 center">
+                      <h5>
+                        <strong>Customer</strong>
+                      </h5>
+                      <p>{user?.username}</p>
+                      <p>{user?.email}</p>
+                    </div>
                     </div>
                   </div>
-                <div className="col-md-8 center">
-                  <h5>
-                    <strong>Customer</strong>
-                  </h5>
-                  <p>{user.username}</p>
-                  <p>{user.email}</p>
-               </div>
-            </div>
-            </div>
-           
             </div>
        
         {/* 2*/}
@@ -273,29 +277,16 @@ const [stripeToken, setStripeToken] = useState(null);
         <div className="col-lg-4 col-sm-4 mb-lg-4 mb-5 mb-sm-0">
           <div className="row">
             <div className="col-md-4 center">
-              <div className="alert-info order-box">
+              <div className="infoo order-box">
                 <i className="fas fa-truck-moving"></i>
               </div>
             </div>
-            <div className="col-md-8 center">
+            <div className="col-md-0 center">
               <h5>
                 <strong> Order info</strong>
               </h5>
               <p>Shipping address:{cart2.shippingAddress.city}{" "}{cart2.shippingAddress.postalCode}{" "}{cart2.shippingAddress.address}</p>
               <p>Pay method: {cart2.paymentMethod}</p>
-                      {/*  {
-                            order.isPaid ? (
-                              <button className="widgetLgButton approved">
-                                  Paid
-                              </button>
-                            )
-                            :
-                            (
-                            <button className="widgetLgButton declined">
-                                NOT Paid
-                            </button>
-                            )
-                        }*/}
             </div>
           </div>
           
@@ -308,15 +299,16 @@ const [stripeToken, setStripeToken] = useState(null);
         <div className="col-lg-4 col-sm-4 mb-lg-4 mb-5 mb-sm-0">
           <div className="row">
             <div className="col-md-4 center">
-              <div className="alert-info order-box">
+              <div className="infoo order-box">
                 <i className="fas fa-map-marker-alt"></i>
               </div>
             </div>
-            <div className="col-md-8 center">
+            <div className="col-md-0 center">
               <h5>
                 <strong> Deliver to</strong>
-              </h5> 
-              <p>Address: {cart2.shippingAddress.country}</p>        
+              </h5>
+              <p>Address: {cart2.shippingAddress.country}</p>
+            
             </div>
             </div>
           </div>
@@ -397,7 +389,14 @@ const [stripeToken, setStripeToken] = useState(null);
 
       </Wrapper>
       
+      
     </Container>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <Footer/>
+    </>
   );
 };
 
