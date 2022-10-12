@@ -1,0 +1,13 @@
+[Unit]
+Description=EMS Marketplace Client
+After=syslog.target network.target
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+ExecStart=/home/karem/Documents/EmsMarketplace/launchscripts/EmsClientScript.sh
+User=root
+
+[Install]
+WantedBy=multi-user.target
