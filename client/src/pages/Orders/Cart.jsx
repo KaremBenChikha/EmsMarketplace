@@ -6,7 +6,7 @@ import { mobile } from "../../responsive";
 import { useHistory } from "react-router";
 import Navbar from "../../components/navbar/Navbar";
 import Navbar2 from "../../components/Navbar2";
-
+import Message from '../../components/starRating/Message'
 const KEY = process.env.REACT_APP_STRIPE;
 
 const Container = styled.div``;
@@ -171,7 +171,7 @@ const Cart = () => {
 
 const quantity = useSelector(state=>state.cart.quantity)
 const cart = useSelector((state) => state.cart);
-
+const user = useSelector((state) => state.user.currentUser);
 
 const history = useHistory();
 const placeOrderHandler =() => {
@@ -188,21 +188,37 @@ const placeOrderHandler =() => {
       <Wrapper>
       
         <Top>
-        <Link to="/">
-          <TopButton >CONTINUE SHOPPING</TopButton>
+        
+        <Link>
+          <a className='link' href='/products'>
+            <TopButton >CONTINUE SHOPPING</TopButton>
+          </a>
         </Link>
-
           <TopTexts>
             <TopText>Shopping Bag ({quantity})</TopText>
             <TopText>Your Wishlist (0)</TopText>
           </TopTexts>
-          
-          { (
-          <TopButton type="submit" onClick={placeOrderHandler}>CHECKOUT NOW</TopButton>
+          {user ? 
+          (
+            (
+            <TopButton type="submit" onClick={placeOrderHandler}>CHECKOUT NOW</TopButton>
+            )
+          ) : 
+          (
+            (
+              <>
+              <a className='link' href='/login'>
+                <TopButton type="submit">CHECKOUT NOW</TopButton>
+              </a>
+              </>
+            )
           )}
           
           
         </Top>
+        {user ? (<br/>):
+        (<Message>Please sign in to CHECKOUT</Message>)
+         }
         <Bottom>
           <Info>
             {cart.products.map((product) => (

@@ -71,7 +71,7 @@ export default function WidgetLg({ item }) {
                         }
                   </td>
               <td>
-              <Link to={"/backend/orders/"+order._id} className="link">
+              <Link to={"/backend/order/"+order._id} className="link">
                   <button className="widgetSmButton">
                   <Visibility className="widgetSmIcon" />
                       Display

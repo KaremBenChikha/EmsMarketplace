@@ -17,7 +17,7 @@ const Button = styled.button`
 
 export default function OrderD() {
     const location = useLocation();
-    const orderId = location.pathname.split("/")[2];
+    const orderId = location.pathname.split("/")[3];
     //const orders = useSelector((state) => state.order.orders);
     const dispatch = useDispatch();
     
@@ -47,7 +47,7 @@ export default function OrderD() {
    <>
    <div className="home">
         <div className="featured">
-            <div className="featuredItem">
+            <div className="featuredItem2">
                 <span className="featuredTitle">ORDER DETAILS</span>
                 <p>Order Id: {order?._id}</p>
                 <p>{
@@ -58,7 +58,7 @@ export default function OrderD() {
                         )
                         :
                         (
-                        <span className="widgetLgButton.declined">
+                        <span className="widgetLgButton declined">
                              NOT Paid
                         </span>   
                         )
@@ -71,13 +71,13 @@ export default function OrderD() {
                         )
                         :
                         (
-                        <span className="widgetLgButton.declined">
+                        <span className="widgetLgButton declined">
                              NOT Delivered
                         </span>   
                         )
                 }
                 <p>Created At : {order?.createdAt}</p>
-                <span className="featuredTitle">
+                <span className="">
                 <p>TOTAL PRICE : ${order?.totalPrice}</p>
                 </span>
                 
@@ -100,59 +100,25 @@ export default function OrderD() {
 
             </div>
 
-        <div className="featuredItem">
-            <div class="alert alert-info" role="alert">  
-           <div class="rowA">
-             <div class="columnB">
-                <div className="col-lg-4 col-sm-4 mb-lg-4 mb-5 mb-sm-0">
-                  <div className="row">
-                    <div className="col-md-4 center">
-                      <div className="alert-info order-box">
-                        <i class="fas fa-user"></i>
-                        </div>
-                      </div>
-                    <div className="col-md-8 center">
-                      <h5>
-                        <strong>Customer</strong>
-                      </h5>
-                      <p>ID: {order?.user}</p>
-                      
-                    </div>
-                    </div>
-                  </div>
-            </div>
-       
+      <div className="featuredItem">
+        
+            <i class="fas fa-user"></i>
+            <strong>Customer</strong>
+            <p>ID: {order?.user}</p>
         {/* 2*/}
-        <div class="columnB">
-         
-        <div className="col-lg-4 col-sm-4 mb-lg-4 mb-5 mb-sm-0">
-          <div className="row">
-            <div className="col-md-4 center">
-              <div className="alert-info order-box">
-                <i className="fas fa-truck-moving"></i>
-              </div>
-            </div>
-            <div className="col-md-8 center">
-              <h5>
-                <strong> Deliver to</strong>
-              </h5>
+
+            <i className="fas fa-truck-moving"></i>
+            <strong> Deliver to</strong>
               {order?.shippingAddress.map((o)=>(
                 <>
                 <p>Shipping address: {o?.city}{", "}{o?.postalCode}{", "}{o?.address}</p>
                 <p>Pay method: {order?.paymentMethod}</p>
                 </>
               ))}
-              
-            </div>
-          </div> 
-        </div>
-    </div>
-        
-        
-                </div>
-            </div>
-          </div> 
-        </div>
+
+      </div>
+    </div> 
+ 
     <br/>
     
     

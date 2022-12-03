@@ -24,7 +24,7 @@ import {
     ORDER_DELIVERED_FAIL
   } from '../constants/orderConstants'
   import {CART_CLEAR_ITEMS} from '../constants/CartConstants'
-  import { logout  } from './userActions';
+  import { logout  } from './UserActions';
   
 //CREATE ORDER
 export const createOrder = (order) => async (dispatch, getState) => {

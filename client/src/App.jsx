@@ -34,6 +34,7 @@ import Mainn from "./pages/ROS/Mainn";
 import HomeBackend from "./pages/Backend/home/HomeBackend";
 import UserList from "./pages/Backend/userList/UserList";
 import User from "./pages/Backend/user/User";
+//import Write from "./pages/Backend/writeArticle/Write";
 import NewUser from "./pages/Backend/newUser/NewUser";
 import OrderList from "./pages/Backend/orders/OrderList";
 import OrderD from "./pages/Backend/orders/OrderD";
@@ -43,6 +44,7 @@ import Topbar from "./components/Backend/topbar/Topbar";
 import Sidebar from "./components/Backend/sidebar/Sidebar";
 import Login2 from "./pages/Login_Rege/Login2";
 import ForgottenPassword from "./pages/ForgottenPassword/ForgottenPassword";
+import Pp from "./pages/Backend/product/Pp";
 //import Write2 from "./pages/Backend/writeArticle/Write2";
 
 const App = () => {
@@ -152,8 +154,14 @@ const App = () => {
         <Route path="/backend/analytics">
             <ProductAnalytics />
         </Route>
+        {/*<Route path="/backend/articles">
+            <Write />
+        </Route>*/}
         <Route path="/backend/products">
             <ProductList2 />
+        </Route>
+        <Route path="/backend/product">
+            <Pp />
         </Route>
     
         

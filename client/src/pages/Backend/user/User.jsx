@@ -9,7 +9,7 @@ import {
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {getUserDetails2} from "../../../redux/actions/userActions"
+import {getUserDetails2} from "../../../redux/actions/UserActions"
 import { useEffect } from "react";
 import "./user.css";
 
@@ -18,7 +18,7 @@ export default function User() {
 
 
   const location = useLocation();
-  const userId = location.pathname.split("/")[2];
+  const userId = location.pathname.split("/")[3];
   const dispatch = useDispatch();
 
  

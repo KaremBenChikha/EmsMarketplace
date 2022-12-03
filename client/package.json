@@ -1,6 +1,7 @@
 {
   "name": "new",
   "version": "0.1.0",
+  "main": "index.js",
   "private": true,
   "dependencies": {
     "@emailjs/browser": "^3.6.2",
@@ -51,7 +52,7 @@
     "stripe": "^8.174.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently \"nodemon index.js\" \"react-scripts start\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
