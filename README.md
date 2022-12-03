@@ -9,5 +9,3 @@ Open http://localhost:3000 to view it in the browser.<br/>
 
 And you're DONE.<br/>
 You should repeat this process for each directory (admin, client, api) and try to run them all at the same time
-
-
